@@ -98,7 +98,7 @@ class Transactions:
     for a wallet address
     """
     _method = "getTransfersByAddress"
-    _config = {"limit": limit}
+    _config: dict[str, str | int] = {"limit": limit}
     if mint is not None:
       _config["mint"] = mint
     if paginationToken is not None:
