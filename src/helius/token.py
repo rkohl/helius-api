@@ -1,13 +1,13 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from models.token import (
+from .models.token import (
   TokenAmountModel,
   TTokenAccountsModel,
   TTokenLargestAccountsModel,
 )
 
 if TYPE_CHECKING:
-  from helius import Helius, Pubkey
+  from .helius import Helius, Pubkey
 
 
 class Token:

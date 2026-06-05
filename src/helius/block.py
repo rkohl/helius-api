@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from models.block import (
+from .models.block import (
   BlockModel,
   TBlocksModel,
   BlockCommitmentModel,
@@ -9,7 +9,7 @@ from models.block import (
 )
 
 if TYPE_CHECKING:
-  from helius import Helius
+  from .helius import Helius
 
 
 class Block:

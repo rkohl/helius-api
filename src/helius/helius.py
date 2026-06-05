@@ -3,15 +3,15 @@ from typing import Literal
 type Pubkey = str
 HTTPMethod = Literal["GET", "POST"]
 
-from models.error import ErrorModel
-from accounts import Accounts
-from block import Block
-from transactions import Transactions
-from token import Token
-from slot import Slot
-from epoch import Epoch
-from inflationRewards import InflationRewards
-from systemInfo import SystemInfo
+from .models.error import ErrorModel
+from .accounts import Accounts
+from .block import Block
+from .transactions import Transactions
+from .token import Token
+from .slot import Slot
+from .epoch import Epoch
+from .inflationRewards import InflationRewards
+from .systemInfo import SystemInfo
 
 
 class Helius:

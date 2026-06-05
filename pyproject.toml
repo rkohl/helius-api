@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "helius-py"
 version = "1.0.0"
@@ -25,19 +29,6 @@ dependencies = [
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-py-modules = [
-  "helius",
-  "accounts",
-  "block",
-  "epoch",
-  "inflationRewards",
-  "slot",
-  "systemInfo",
-  "token",
-  "transactions",
-]
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["models*"]
-namespaces = true

@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from models.accounts import (
+from .models.accounts import (
   AccountInfoModel,
   AccountBalanceModel,
   TMultipleAccountsModel,
@@ -12,7 +12,7 @@ from models.accounts import (
 )
 
 if TYPE_CHECKING:
-  from helius import Helius, Pubkey
+  from .helius import Helius, Pubkey
 
 
 class Accounts:

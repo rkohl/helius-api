@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Literal
-from models.transactions import (
+from .models.transactions import (
   TransactionModel,
   TSignaturesForAddressModel,
   TransactionsForAddressModel,
@@ -10,7 +10,7 @@ from models.transactions import (
 )
 
 if TYPE_CHECKING:
-  from helius import Helius, Pubkey
+  from .helius import Helius, Pubkey
 
 
 class Transactions:
