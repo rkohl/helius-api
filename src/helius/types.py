@@ -252,7 +252,7 @@ class Accounts:
    
   """
   
-  addresses: Addresses = []
+  addresses: Addresses = dataclasses.field(default_factory=list)
   """
   List of addresses to query
   """
