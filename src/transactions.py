@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, Literal
-from .models.transactions import (
+from models.transactions import (
   TransactionModel,
   TSignaturesForAddressModel,
   TransactionsForAddressModel,
@@ -10,7 +10,7 @@ from .models.transactions import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from helius import Helius, Pubkey
 
 
 class Transactions:
@@ -78,7 +78,7 @@ class Transactions:
     server-side filters and pagination
     """
     _method = "getTransactionsForAddress"
-    _config = {"transactionDetails": transactionDetails, "limit": limit}
+    _config: dict[str, str | int] = {"transactionDetails": transactionDetails, "limit": limit}
     if paginationToken is not None:
       _config["paginationToken"] = paginationToken
     _params = [address, _config]

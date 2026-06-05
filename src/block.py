@@ -9,7 +9,7 @@ from models.block import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius
+  from helius import Helius
 
 
 class Block:

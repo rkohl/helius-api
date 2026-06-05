@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from .models.systemInfo import (
+from models.systemInfo import (
   IdentityModel,
   VersionModel,
   TClusterNodesModel,
@@ -11,7 +11,7 @@ from .models.systemInfo import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from helius import Helius, Pubkey
 
 
 class SystemInfo:

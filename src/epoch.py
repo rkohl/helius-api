@@ -1,13 +1,13 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
-from .models.epoch import (
+from models.epoch import (
   EpochInfoModel,
   EpochScheduleModel,
   TLeaderScheduleModel,
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius
+  from helius import Helius
 
 
 class Epoch:

@@ -12,7 +12,7 @@ from models.accounts import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from helius import Helius, Pubkey
 
 
 class Accounts:
