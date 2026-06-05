@@ -90,12 +90,12 @@ class Helius:
   def accounts(self) -> Accounts:
     """
     Accounts Endpoint (6):
-      - getAccountInfo
+      - getInfo
       - getBalance
-      - getProgramAccounts
-      - getMultipleAccounts
-      - getMinimumBalanceForRentExemption
-      - getLargestAccounts
+      - getPrograms
+      - getMultiple
+      - getMinimumRentBalance
+      - getLargest
     """
     return Accounts(self)
 
