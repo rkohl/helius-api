@@ -4,7 +4,7 @@ from typing import Literal
 type Pubkey = str
 HTTPMethod = Literal["GET", "POST"]
 
-from .models.error import ErrorModel
+from .models import ErrorModel
 from .accounts import Accounts
 from .block import Block
 from .transactions import Transactions
