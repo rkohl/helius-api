@@ -30,7 +30,7 @@ Install using pip:
 ```shell
 pip install helius-api
 ```
-**Requirements:** Python 3.7+
+**Requirements:** Python 3.12+
 ___
 
 
