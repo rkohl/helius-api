@@ -96,6 +96,9 @@ if result is None:
     print("Request failed")
 ```
 
+## Todo
+- Add the additional configuration parameters to the endpoints
+
 ## Running Tests
 
 ```bash
