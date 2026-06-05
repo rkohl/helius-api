@@ -37,6 +37,12 @@ class Accounts:
     """
     Returns all information associated with
     the account of provided Pubkey
+
+    Args:
+     - pubKey: Pubkey of the account to query
+
+    Retuns: 
+      AccountInfoModel or None
     """
     _method = "getAccountInfo"
     _params = [pubKey]
@@ -48,6 +54,12 @@ class Accounts:
     """
     Returns the lamport balance of the
     account of provided Pubkey
+
+    Args:
+      - pubKey: Pubkey of the account to query
+
+    Returns:
+      int or None
     """
     _method = "getBalance"
     _params = [pubKey]

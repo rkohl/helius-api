@@ -20,11 +20,11 @@ keywords = [
   "web3",
   "solana-rpc",
   ]
-
 requires-python = ">=3.12"
 dependencies = [
   "requests",
-  "pydantic"
+  "pydantic",
+  "pytest"
 ]
 
 [tool.setuptools]
