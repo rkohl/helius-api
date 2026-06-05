@@ -1,0 +1,27 @@
+[project]
+name = "helius-py"
+version = "1.0.0"
+readme = "README.md"
+license = "MIT"
+description = "A lightweight Helius RPC client in python for Solana that offers a variety of features including enhanced transaction history, token metadata, and more."
+authors = [ 
+  { name = "rkohl"}
+]
+keywords = [
+  "helius",
+  "solana",
+  "blockchain",
+  "rpc",
+  "api",
+  "web3",
+  "solana-rpc",
+  ]
+  
+requires-python = ">=3.12"
+dependencies = [
+  "requests"
+]
+
+[tool.setuptools]
+packages = ["helius-py"]
+package-dir = {"helius-py" = "src"}
