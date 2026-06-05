@@ -1,4 +1,3 @@
-import requests
 from typing import Literal, TypeAlias
 
 Pubkey: TypeAlias = str
@@ -64,6 +63,7 @@ class Helius:
     Returns:
       dict | None: The response from the RPC API, or None if the request failed.
     """
+    from re
     headers = {"Content-Type": "application/json"}
     payload = {"jsonrpc": self._jsonrpc, "id": self._id, "method": call, "params": params}
 
