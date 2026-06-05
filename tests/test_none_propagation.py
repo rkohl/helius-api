@@ -6,9 +6,9 @@ import pytest
 @pytest.mark.parametrize(
     "call",
     [
-        lambda c: c.accounts.getAccountInfo("P"),
+        lambda c: c.accounts.getInfo("P"),
         lambda c: c.accounts.getBalance("P"),
-        lambda c: c.accounts.getLargestAccounts(),
+        lambda c: c.accounts.getLargest(),
         lambda c: c.block.getBlock(1),
         lambda c: c.block.getBlockHeight(),
         lambda c: c.epoch.getEpochInfo(),

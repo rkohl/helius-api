@@ -25,12 +25,12 @@ class Accounts:
   https://www.helius.dev/docs/api-reference/rpc/http-methods#account-information
 
   Methods (6):
-    - getAccountInfo
+    - getInfo
     - getBalance
-    - getProgramAccounts
-    - getMultipleAccounts
-    - getMinimumBalanceForRentExemption
-    - getLargestAccounts
+    - getPrograms
+    - getMultiple
+    - getMinimumRentBalance
+    - getLargest
   """
 
   def __init__(self, helius: Helius):
