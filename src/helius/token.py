@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+
 from .models.token import (
   TokenAmountModel,
   TTokenAccountsModel,
@@ -7,7 +8,8 @@ from .models.token import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from .helius import Helius
+  from .types import PublicKey, Mint
 
 
 class Token:
@@ -27,17 +29,17 @@ class Token:
   def __init__(self, helius: Helius):
     self._helius: Helius = helius
 
-  def getTokenAccountBalance(self, pubKey: Pubkey) -> TokenAmountModel | None:
+  def getTokenAccountBalance(self, publicKey: PublicKey) -> TokenAmountModel | None:
     """
     Returns the token balance of an account
     """
     _method = "getTokenAccountBalance"
-    _params = [pubKey]
+    _params = [publicKey]
 
     data = self._helius._makeRequest(_method, _params)
     return TokenAmountModel(**data["result"]["value"]) if data else None
 
-  def getTokenAccountsByOwner(self, owner: Pubkey, mint: Pubkey) -> list | None:
+  def getTokenAccountsByOwner(self, owner: PublicKey, mint: PublicKey) -> list | None:
     """
     Returns all token accounts owned by the specified address
     """
@@ -47,7 +49,7 @@ class Token:
     data = self._helius._makeRequest(_method, _params)
     return TTokenAccountsModel.validate_python(data["result"]["value"]) if data else None
 
-  def getTokenAccountsByDelegate(self, delegate: Pubkey, mint: Pubkey) -> list | None:
+  def getTokenAccountsByDelegate(self, delegate: PublicKey, mint: Mint) -> list | None:
     """
     Returns all token accounts that delegate to the specified address
     """
@@ -57,7 +59,7 @@ class Token:
     data = self._helius._makeRequest(_method, _params)
     return TTokenAccountsModel.validate_python(data["result"]["value"]) if data else None
 
-  def getTokenLargestAccounts(self, mint: Pubkey) -> list | None:
+  def getTokenLargestAccounts(self, mint: Mint) -> list | None:
     """
     Returns the largest accounts for a specific token
     """
@@ -67,7 +69,7 @@ class Token:
     data = self._helius._makeRequest(_method, _params)
     return TTokenLargestAccountsModel.validate_python(data["result"]["value"]) if data else None
 
-  def getTokenSupply(self, mint: Pubkey) -> TokenAmountModel | None:
+  def getTokenSupply(self, mint: Mint) -> TokenAmountModel | None:
     """
     Returns the total supply of a token
     """

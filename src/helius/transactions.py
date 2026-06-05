@@ -10,7 +10,8 @@ from .models.transactions import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from .helius import Helius
+  from .types import PublicKey, Address
 
 
 class Transactions:
@@ -55,7 +56,7 @@ class Transactions:
     data = self._helius._makeRequest(_method, _params)
     return int(data["result"]) if data else None
 
-  def getSignaturesForAddress(self, address: Pubkey, limit: int = 1000) -> list | None:
+  def getSignaturesForAddress(self, address: Address, limit: int = 1000) -> list | None:
     """
     Returns signatures for confirmed transactions
     that include the given address
@@ -68,7 +69,7 @@ class Transactions:
 
   def getTransactionsForAddress(
     self,
-    address: Pubkey,
+    address: Address,
     transactionDetails: Literal["signatures", "full"] = "signatures",
     limit: int = 1000,
     paginationToken: str | None = None,
@@ -88,7 +89,7 @@ class Transactions:
 
   def getTransfersByAddress(
     self,
-    address: Pubkey,
+    address: Address,
     mint: str | None = None,
     limit: int = 1000,
     paginationToken: str | None = None,
@@ -150,7 +151,7 @@ class Transactions:
     data = self._helius._makeRequest(_method, _params)
     return SimulateTransactionModel(**data["result"]["value"]) if data else None
 
-  def requestAirdrop(self, pubKey: Pubkey, lamports: int) -> str | None:
+  def requestAirdrop(self, pubKey: PublicKey, lamports: int) -> str | None:
     """
     Requests an airdrop of lamports to a Pubkey
     """

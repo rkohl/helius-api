@@ -1,7 +1,3 @@
-from typing import Literal
-
-type Pubkey = str
-HTTPMethod = Literal["GET", "POST"]
 
 from .models.error import ErrorModel
 from .accounts import Accounts
@@ -16,30 +12,30 @@ from .systemInfo import SystemInfo
 
 class Helius:
   """
-  Helius RPC client for Solana that offers a variety 
-  of features including enhanced transaction history, 
+  Helius RPC client for Solana that offers a variety
+  of features including enhanced transaction history,
   token metadata, and more.
+  
   https://www.helius.dev/docs/api-reference/rpc/http-methods
 
-  The Helius class is the main entry point for interacting 
-  with the Helius RPC API. It provides methods for retrieving 
-  information about accounts, blocks, transactions, tokens, 
-  slots, epochs, inflation and rewards, and system information.
-
   Attributes:
-    apiKey (str): The API key for the Helius RPC API.
-    jsonrpc (str): The JSON-RPC version to use. Defaults to "2.0".
-    id (int): The ID to use for JSON-RPC requests. Defaults to 1.
-    url (str): The base URL for the Helius RPC API. Defaults to "https://mainnet.helius-rpc.com".
+    - apiKey (str): The API key for the Helius RPC API.
+    - jsonrpc (str): The JSON-RPC version to use. Defaults to "2.0".
+    - id (int): The ID to use for JSON-RPC requests. Defaults to 1.
+    - url (str): The base URL for the Helius RPC API.
   """
 
   def __init__(
-    self, apiKey: str, jsonrpc: str | None = None, id: int | None = None, url: str | None = None
+      self,
+      apiKey: str,
+      jsonrpc: str | None = None,
+      id: int | None = None,
+      url: str | None = None,
   ):
-    self._apiKey = apiKey
-    self._jsonrpc = jsonrpc if jsonrpc is None else "2.0"
-    self._id = id if id is not None else 1
-    self._baseURL = "https://mainnet.helius-rpc.com" if url is None else url
+      self._apiKey = apiKey
+      self._jsonrpc = jsonrpc if jsonrpc is None else "2.0"
+      self._id = id if id is not None else 1
+      self._baseURL = "https://mainnet.helius-rpc.com" if url is None else url
 
   @property
   def url(self) -> str:
@@ -64,21 +60,29 @@ class Helius:
       dict | None: The response from the RPC API, or None if the request failed.
     """
     import requests
+
     headers = {"Content-Type": "application/json"}
-    payload = {"jsonrpc": self._jsonrpc, "id": self._id, "method": call, "params": params}
+    payload = {
+        "jsonrpc": self._jsonrpc,
+        "id": self._id,
+        "method": call,
+        "params": params,
+    }
 
     try:
-      response = requests.post(self.url, json=payload, headers=headers, timeout=30)
-      response.raise_for_status()
-      data = response.json()
+        response = requests.post(
+            self.url, json=payload, headers=headers, timeout=30
+        )
+        response.raise_for_status()
+        data = response.json()
     except requests.exceptions.RequestException as e:
-      print(f"Error making request: {e}")
-      return None
+        print(f"Error making request: {e}")
+        return None
 
     if "error" in data:
-      error = ErrorModel(**data["error"])
-      print(f"RPC error ({error.code}): {error.message}")
-      return None
+        error = ErrorModel(**data["error"])
+        print(f"RPC error ({error.code}): {error.message}")
+        return None
 
     return data
 

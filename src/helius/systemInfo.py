@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from .types import PublicKey
 from .models.systemInfo import (
   IdentityModel,
   VersionModel,
@@ -11,7 +12,8 @@ from .models.systemInfo import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from .helius import Helius
+  from .types import PublicKey
 
 
 class SystemInfo:
@@ -107,7 +109,7 @@ class SystemInfo:
     data = self._helius._makeRequest(_method, _params)
     return TPerformanceSamplesModel.validate_python(data["result"]) if data else None
 
-  def getRecentPrioritizationFees(self, addresses: list[Pubkey] | None = None) -> list | None:
+  def getRecentPrioritizationFees(self, addresses: list[PublicKey] | None = None) -> list | None:
     """
     Returns recent block hash fee information
     """

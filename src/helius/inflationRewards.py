@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from .types import PublicKey
 from .models.inflationRewards import (
   InflationGovernorModel,
   InflationRateModel,
@@ -7,7 +8,8 @@ from .models.inflationRewards import (
 )
 
 if TYPE_CHECKING:
-  from .helius import Helius, Pubkey
+  from .helius import Helius
+  from .types import PublicKey
 
 
 class InflationRewards:
@@ -46,7 +48,7 @@ class InflationRewards:
     data = self._helius._makeRequest(_method, _params)
     return InflationRateModel(**data["result"]) if data else None
 
-  def getInflationReward(self, addresses: list[Pubkey], epoch: int | None = None) -> list | None:
+  def getInflationReward(self, addresses: list[PublicKey], epoch: int | None = None) -> list | None:
     """
     Returns the inflation reward for a list
     of addresses for an epoch

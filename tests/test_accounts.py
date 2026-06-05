@@ -20,15 +20,15 @@ def _account_value():
 
 def test_get_account_info(client):
     client._makeRequest = MagicMock(return_value={"result": {"value": _account_value()}})
-    res = client.accounts.getAccountInfo("PUB")
+    res = client.accounts.getInfo("PUB")
     assert isinstance(res, AccountInfoModel)
     assert res.lamports == 100 and res.owner == "Own111"
-    client._makeRequest.assert_called_once_with("getAccountInfo", ["PUB"])
+    client._makeRequest.assert_called_once_with("getInfo", ["PUB"])
 
 
 def test_get_account_info_none(client):
     client._makeRequest = MagicMock(return_value=None)
-    assert client.accounts.getAccountInfo("PUB") is None
+    assert client.accounts.getInfo("PUB") is None
 
 
 def test_get_balance(client):
@@ -41,26 +41,26 @@ def test_get_program_accounts(client):
     client._makeRequest = MagicMock(
         return_value={"result": [{"account": _account_value(), "pubkey": "P1"}]}
     )
-    res = client.accounts.getProgramAccounts("PROG")
+    res = client.accounts.getPrograms("PROG")
     assert len(res) == 1 and isinstance(res[0], ProgramAccountsModel)
     assert res[0].pubkey == "P1"
-    client._makeRequest.assert_called_once_with("getProgramAccounts", ["PROG"])
+    client._makeRequest.assert_called_once_with("getPrograms", ["PROG"])
 
 
 def test_get_multiple_accounts(client):
     client._makeRequest = MagicMock(
         return_value={"result": {"value": [_account_value(), None]}}
     )
-    res = client.accounts.getMultipleAccounts(["P1", "P2"])
+    res = client.accounts.getMultiple(["P1", "P2"])
     assert res[0].lamports == 100 and res[1] is None
-    client._makeRequest.assert_called_once_with("getMultipleAccounts", [["P1", "P2"]])
+    client._makeRequest.assert_called_once_with("getMultiple", [["P1", "P2"]])
 
 
 def test_get_minimum_balance_for_rent_exemption(client):
     client._makeRequest = MagicMock(return_value={"result": 890880})
-    assert client.accounts.getMinimumBalanceForRentExemption("PUB") == 890880
+    assert client.accounts.getMinimumRentBalance("PUB") == 890880
     client._makeRequest.assert_called_once_with(
-        "getMinimumBalanceForRentExemption", ["PUB"]
+        "getMinimumRentBalance", ["PUB"]
     )
 
 
@@ -68,6 +68,6 @@ def test_get_largest_accounts(client):
     client._makeRequest = MagicMock(
         return_value={"result": {"value": [{"lamports": 9, "address": "A1"}]}}
     )
-    res = client.accounts.getLargestAccounts()
+    res = client.accounts.getLargest()
     assert isinstance(res[0], LargestAccountsModel) and res[0].address == "A1"
-    client._makeRequest.assert_called_once_with("getLargestAccounts", [])
+    client._makeRequest.assert_called_once_with("getLargest", [])
