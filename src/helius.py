@@ -1,6 +1,6 @@
-from typing import Literal, TypeAlias
+from typing import Literal
 
-Pubkey: TypeAlias = str
+type Pubkey = str
 HTTPMethod = Literal["GET", "POST"]
 
 from models.error import ErrorModel
@@ -63,7 +63,7 @@ class Helius:
     Returns:
       dict | None: The response from the RPC API, or None if the request failed.
     """
-    from re
+    import requests
     headers = {"Content-Type": "application/json"}
     payload = {"jsonrpc": self._jsonrpc, "id": self._id, "method": call, "params": params}
 
@@ -85,7 +85,7 @@ class Helius:
   @property
   def accounts(self) -> Accounts:
     """
-    Accounts Endpoints (6):
+    Accounts Endpoint (6):
       - getAccountInfo
       - getBalance
       - getProgramAccounts
@@ -98,7 +98,7 @@ class Helius:
   @property
   def block(self) -> Block:
     """
-    Block Endpoints (9):
+    Block Endpoint (9):
       - getBlock
       - getBlocks
       - getBlocksWithLimit
@@ -114,7 +114,7 @@ class Helius:
   @property
   def epoch(self) -> Epoch:
     """
-    Epoch Endpoints (3):
+    Epoch Endpoint (3):
       - getEpochInfo
       - getEpochSchedule
       - getLeaderSchedule
@@ -124,7 +124,7 @@ class Helius:
   @property
   def inflationRewards(self) -> InflationRewards:
     """
-    Inflation & Rewards Endpoints (3):
+    Inflation & Rewards Endpoint (3):
       - getInflationGovernor
       - getInflationRate
       - getInflationReward
@@ -134,7 +134,7 @@ class Helius:
   @property
   def slot(self) -> Slot:
     """
-    Slot Endpoints (7):
+    Slot Endpoint (7):
       - getSlot
       - getSlotLeader
       - getSlotLeaders
@@ -148,7 +148,7 @@ class Helius:
   @property
   def systemInfo(self) -> SystemInfo:
     """
-    System Information Endpoints (11):
+    System Information Endpoint (11):
       - getHealth
       - getIdentity
       - getVersion
@@ -166,7 +166,7 @@ class Helius:
   @property
   def token(self) -> Token:
     """
-    Token Endpoints (5):
+    Token Endpoint (5):
       - getTokenAccountBalance
       - getTokenAccountsByOwner
       - getTokenAccountsByDelegate
@@ -178,7 +178,7 @@ class Helius:
   @property
   def transactions(self) -> Transactions:
     """
-    Transaction Endpoints (8):
+    Transaction Endpoint (8):
       - getTransaction
       - getTransactionCount
       - getSignaturesForAddress

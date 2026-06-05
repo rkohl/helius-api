@@ -16,7 +16,7 @@ keywords = [
   "web3",
   "solana-rpc",
   ]
-  
+
 requires-python = ">=3.12"
 dependencies = [
   "requests",
@@ -24,5 +24,20 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["helius-py"]
-package-dir = {"helius-py" = "src"}
+package-dir = {"" = "src"}
+py-modules = [
+  "helius",
+  "accounts",
+  "block",
+  "epoch",
+  "inflationRewards",
+  "slot",
+  "systemInfo",
+  "token",
+  "transactions",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["models*"]
+namespaces = true
