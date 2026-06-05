@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "helius-py"
+name = "helius-api"
 version = "1.0.0"
 readme = "README.md"
 license = "MIT"

@@ -1,4 +1,4 @@
-# helius-py
+# helius-api
 
 A lightweight [Helius](https://www.helius.dev/) RPC client in Python for Solana. It offers a clean, typed wrapper around the Helius JSON-RPC HTTP methods, grouped into intuitive modules for accounts, blocks, epochs, slots, tokens, transactions, inflation/rewards, and system information.
 
@@ -25,13 +25,14 @@ A lightweight [Helius](https://www.helius.dev/) RPC client in Python for Solana.
 
 ## Installation
 
-Install from source:
+Install using pip:
 
-```bash
-pip install -e .
+```shell
+pip install helius-api
 ```
+**Requirements:** Python 3.7+
+___
 
-Dependencies (`requests`, `pydantic`, `pytest`) are installed automatically.
 
 ## Quick Start
 
